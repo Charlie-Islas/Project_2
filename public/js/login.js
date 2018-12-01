@@ -37,7 +37,15 @@ $(document).ready(function() {
   }
 
   function handleLoginErr(err) {
-    $("#alert").text(err.responseJSON);
+    var errMsg='';
+    console.log(err.status);
+    if(err.status==401){
+      errMsg='Correo eletrónico o contraseña incorrectos. Por favor vuelva a intentar.';
+    }
+    else{
+      errMsg='Hay un error del servidor. Favor de volver a intentar';
+    }
+    $("#alert").text(errMsg);
     $("#alert").fadeIn(500);
     $("#alert").css("display", "inline-block");
   }

@@ -36,4 +36,16 @@ $(document).ready(function() {
   }
 
   function handleLoginErr(err) {
-    console.log(err.responseJSON.e
+    var errMsg='';
+    console.log(err.responseJSON.errors[0].message);
+    if(err.responseJSON.errors[0].message==='email must be unique'){
+      errMsg='Este correo electrónico ya está registrado.';
+    }
+    else{
+      errMsg='Error del servidor. Favor de volver a intentar.';
+    }
+    $("#alert .msg").text(errMsg);
+    $("#alert").fadeIn(500);
+    $("#alert").css("display","block");
+  }
+});
