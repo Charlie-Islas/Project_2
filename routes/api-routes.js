@@ -20,14 +20,25 @@ module.exports = function(app) {
     console.log(req.body);
     db.User.create({
       email: req.body.email,
-      password: req.body.password
-    }).then(function() {
-      res.redirect(307, "/api/login");
-    }).catch(function(err) {
-      console.log(err);
-      res.json(403,err);  //mandar un error 500
-      // res.status(422).json(err.errors[0].message);
-    });
+      password: req.body.password,
+      street: req.body.street,
+      extNum: req.body.extNum,
+      intNum: req.body.intNum,
+      neighborhood: req.body.neighborhood,
+      zipCode: req.body.zipCode,
+      city: req.body.city,
+      state: req.body.state,
+      taxId: req.body.taxId,
+      contactName: req.body.contactName,
+      telephone: req.body.telephone
+    })
+      .then(function() {
+        res.redirect(307, "/api/login");
+      })
+      .catch(function(err) {
+        console.log(err);
+        res.json(403, err); //send a 403 response if the email is already registered. This is our authentication token, and the only file that cannot be repeated in the database
+      });
   });
 
   // Route for logging user out
@@ -41,8 +52,7 @@ module.exports = function(app) {
     if (!req.user) {
       // The user is not logged in, send back an empty object
       res.json({});
-    }
-    else {
+    } else {
       // Otherwise send back the user's email and id
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
@@ -51,5 +61,4 @@ module.exports = function(app) {
       });
     }
   });
-
 };
