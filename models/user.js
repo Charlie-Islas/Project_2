@@ -17,6 +17,51 @@ module.exports = function(sequelize, DataTypes) {
     password: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+
+    extNum: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+
+    intNum: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+
+    neighborhood: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+
+    zipCode: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+
+    city: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+
+    state: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+
+    taxId: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+
+    contactName: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+
+    telephone: {
+      type: DataTypes.BIGINT,
+      allowNull: false
     }
   });
   // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
@@ -26,7 +71,11 @@ module.exports = function(sequelize, DataTypes) {
   // Hooks are automatic methods that run during various phases of the User Model lifecycle
   // In this case, before a User is created, we will automatically hash their password
   User.hook("beforeCreate", function(user) {
-    user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
+    user.password = bcrypt.hashSync(
+      user.password,
+      bcrypt.genSaltSync(10),
+      null
+    );
   });
   return User;
 };

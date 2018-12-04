@@ -13,7 +13,7 @@ $(document).ready(function() {
     };
 
     if (!userData.email || !userData.password) {
-      alert("Please fill in both required values to continue!"); //maybe it's better to make into a modal here, as they don't like alerts...
+      alert("¡Por favor ingrese información en ambos campos para continuar!"); //maybe it's better to make into a modal here, as they don't like alerts...
       return;
     }
 

@@ -16,6 +16,7 @@ PRIMARY KEY (id_order)
 CREATE TABLE clients(
 id_client INTEGER AUTO_INCREMENT NOT NULL,
 taxPayerName VARCHAR(255) NULL,
+user_password VARCHAR(50) NOT NULL,
 street VARCHAR (100) NULL,
 ext_number VARCHAR(100) NULL,
 int_number VARCHAR(100) NULL,
@@ -25,9 +26,7 @@ city VARCHAR(50) NOT NULL,
 state VARCHAR(50)NOT NULL,
 tax_id VARCHAR(50) NULL,
 contact_name VARCHAR(100) NOT NULL,
-title VARCHAR(50) NULL,
 phone VARCHAR(30) NOT NULL,
-email VARCHAR(50) NOT NULL,
 PRIMARY KEY (id_client)
 );
 
