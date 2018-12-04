@@ -77,6 +77,7 @@ $(document).ready(function() {
     $.post("/api/signup", {
       email: userData.email,
       password: userData.password,
+      name: userData.name,
       street: userData.street,
       extNum: userData.extNum,
       intNum: userData.intNum,

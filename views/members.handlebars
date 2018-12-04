@@ -10,10 +10,45 @@
 
 <div class="container">
     <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <h2>Bienvenido <span class="member-name"></span></h2>
+      <div class="col-md-12 text-center">
+        <h2>Bienvenido <span class="member-name"></span>{{contactName}}</h2>
       </div>
     </div>
+
+    <div class='row text-left'>
+      <h3>Datos del usuario</h3>
+    </div>
+    <div class='row'>
+      <div class='col-md-12'>
+      <ul>
+        <li>Correo electrónico registrado: {{email}}</li>
+        <li>Nombre de contacto: {{contactName}}</li>
+        <li>Teléfono: {{telephone}}</li>
+      </ul>
+      </div>
+    </div>
+    <div class='row text-left'>
+      <h3>Datos de facturación/Entrega</h3>
+    </div>
+    <div class='row'>
+      <div class='col-md-12'>
+      <ul>
+        <li>Nombre/Razón Social: {{name}}</li>
+        <li>Domicilio: {{street}} {{extNum}}, Int. {{intNum}}, Col. {{neighborhood}}, C.P. {{zipCode}}, {{city}}, {{state}}.</li>
+        <li>Registro Federal de Contribuyentes (RFC): {{taxId}}</li>
+      </ul>
+      </div>
+   </div>
+   <div class='row text-center'>
+      <h3 class='text-center'>Pedidos realizados</h3>
+
+      {{#each orders}}
+           {{dataValues.id}}
+                   
+      {{/each}}
+    </div>
+
+    
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
