@@ -47,12 +47,16 @@
          {{#each orders}}
         
         <div class="card bg-light mb-3" style="max-width: 18rem;">
-          <div class="card-header">Pedido {{@index}}</div>
+          <div class="card-header"><h5 class='text-center'>Pedido {{dataValues.newIndex}}</h5></div>
           <div class="card-body">
-            <h5 class="card-title">Producto: {{dataValues.Product.name}}</h5>
+            <p class="card-title">Producto: {{dataValues.Product.name}}</p>
             <p>Cantidad: {{dataValues.quantity}}</p>
-            <p>Precio unitario: {{dataValues.Product.unitaryPrice}}</p>
-            <p>Subtotal: {{dataValues.quantity}}</p>
+            <p>Precio unitario: ${{dataValues.Product.unitaryPrice}}</p>
+            <p>Subtotal: ${{dataValues.subtotal}}</p>
+            <p>IVA (16%): ${{dataValues.vat}}</p>
+            <p>Total: ${{dataValues.total}}</p>
+            <p>Entregado: {{dataValues.delivered}}</p>
+
           </div>
         </div>
 

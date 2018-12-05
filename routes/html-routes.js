@@ -42,24 +42,27 @@ module.exports = function(app) {
       where: {
         email: req.user.email
       },
-      include:[db.Product]
+      include: [db.Product]
     }).then(function(data) {
-     // console.log(data.dataValues);
-      var orders = {};
-      for (var i = 0; i < data.length; i++) {
-        orders.i = data[i].dataValues;
-      }
-
       hbsObject.orders = data;
-
-       // }
-       /* hbsObject.orders = {
-        orders: data
-      };*/
-      console.log("ORDERS --> ", hbsObject.orders[0].Product);
+      for (var i = 0; i < hbsObject.orders.length; i++) {
+        hbsObject.orders[i].Product.unitaryPrice = hbsObject.orders[
+          i
+        ].Product.unitaryPrice.toFixed(2);
+        hbsObject.orders[i].dataValues.newIndex = i + 1;
+        hbsObject.orders[i].dataValues.subtotal = (
+          hbsObject.orders[i].dataValues.quantity *
+          hbsObject.orders[i].dataValues.Product.unitaryPrice
+        ).toFixed(2);
+        hbsObject.orders[i].dataValues.vat = (
+          parseFloat(hbsObject.orders[i].dataValues.subtotal) * 0.16
+        ).toFixed(2);
+        hbsObject.orders[i].dataValues.total = (
+          parseFloat(hbsObject.orders[i].dataValues.subtotal) +
+          parseFloat(hbsObject.orders[i].dataValues.vat)
+        ).toFixed(2);
+      }
       res.render("members", hbsObject);
     });
-
-    //res.render("members", req.user);
   });
 };
