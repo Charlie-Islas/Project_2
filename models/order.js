@@ -1,8 +1,13 @@
 module.exports = function(sequelize, DataTypes) {
   var Order = sequelize.define("Order", {
-    product: DataTypes.STRING,
-    quantity: DataTypes.INTEGER,
-    deliveryAddress: DataTypes.TEXT,
+    quantity:{
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    deliveryAddress: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -10,7 +15,24 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         isEmail: true
       }
-    },
+    }
   });
+
+ /* Order.associate=function(models){
+    Order.hasOne(models.Product,{
+      foreignKey: {allowNull:false}
+    });
+  };*/
+
+  Order.associate=function(models){
+    Order.belongsTo(models.Product,{
+      foreignKey:{allowNull:false}
+  
+     
+    });
+  };
+
+  
+
   return Order;
 };
