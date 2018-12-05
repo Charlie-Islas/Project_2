@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   var Order = sequelize.define("Order", {
-    quantity:{
+    quantity: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
@@ -15,24 +15,25 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         isEmail: true
       }
+    },
+    delivered: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false
     }
   });
 
- /* Order.associate=function(models){
+   /* Order.associate=function(models){
     Order.hasOne(models.Product,{
       foreignKey: {allowNull:false}
     });
   };*/
 
-  Order.associate=function(models){
-    Order.belongsTo(models.Product,{
-      foreignKey:{allowNull:false}
-  
-     
+  Order.associate = function(models) {
+    Order.belongsTo(models.Product, {
+      foreignKey: { allowNull: false }
     });
   };
-
-  
 
   return Order;
 };
