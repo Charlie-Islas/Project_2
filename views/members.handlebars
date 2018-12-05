@@ -41,12 +41,24 @@
    </div>
    <div class='row text-center'>
       <h3 class='text-center'>Pedidos realizados</h3>
-
-      {{#each orders}}
-           {{dataValues.id}}
-                   
-      {{/each}}
     </div>
+
+      
+         {{#each orders}}
+        
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+          <div class="card-header">Pedido {{@index}}</div>
+          <div class="card-body">
+            <h5 class="card-title">Producto: {{dataValues.Product.name}}</h5>
+            <p>Cantidad: {{dataValues.quantity}}</p>
+            <p>Precio unitario: {{dataValues.Product.unitaryPrice}}</p>
+            <p>Subtotal: {{dataValues.quantity}}</p>
+          </div>
+        </div>
+
+
+      {{/each}}
+    
 
     
 </div>

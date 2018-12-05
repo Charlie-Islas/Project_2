@@ -41,22 +41,22 @@ module.exports = function(app) {
     db.Order.findAll({
       where: {
         email: req.user.email
-      }
+      },
+      include:[db.Product]
     }).then(function(data) {
-      console.log(data);
-      var orders={};
+     // console.log(data.dataValues);
+      var orders = {};
       for (var i = 0; i < data.length; i++) {
         orders.i = data[i].dataValues;
       }
-      console.log(orders);
 
-        hbsObject.orders = data;
-      
-     // }
-     /* hbsObject.orders = {
+      hbsObject.orders = data;
+
+       // }
+       /* hbsObject.orders = {
         orders: data
       };*/
-      console.log(hbsObject);
+      console.log("ORDERS --> ", hbsObject.orders[0].Product);
       res.render("members", hbsObject);
     });
 
