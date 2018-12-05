@@ -21,6 +21,7 @@ module.exports = function(app) {
     db.User.create({
       email: req.body.email,
       password: req.body.password,
+      name: req.body.name,
       street: req.body.street,
       extNum: req.body.extNum,
       intNum: req.body.intNum,
@@ -47,7 +48,7 @@ module.exports = function(app) {
     res.redirect("/");
   });
 
-  // Route for getting some data about our user to be used client side
+  // Route for getting sopme data about our user to be used client side
   app.get("/api/user_data", function(req, res) {
     if (!req.user) {
       // The user is not logged in, send back an empty object
