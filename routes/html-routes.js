@@ -71,4 +71,8 @@ module.exports = function(app) {
       res.render("members", hbsObject);
     });
   });
+
+  app.get("/add", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/add.html"));
+  });
 };
