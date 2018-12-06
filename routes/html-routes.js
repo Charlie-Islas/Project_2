@@ -61,6 +61,12 @@ module.exports = function(app) {
           parseFloat(hbsObject.orders[i].dataValues.subtotal) +
           parseFloat(hbsObject.orders[i].dataValues.vat)
         ).toFixed(2);
+
+        if (hbsObject.orders[i].delivered) {
+          hbsObject.orders[i].dataValues.status = "entregado";
+        } else {
+          hbsObject.orders[i].dataValues.status = "no entregado";
+        }
       }
       res.render("members", hbsObject);
     });
