@@ -21,7 +21,7 @@
     <div class='row'>
       <div class='col-md-12'>
       <ul>
-        <li>Correo electrónico registrado: {{email}}</li>
+        <li>Correo electrónico registrado: <span id='userEmail'>{{email}}</span></li>
         <li>Nombre de contacto: {{contactName}}</li>
         <li>Teléfono: {{telephone}}</li>
       </ul>
@@ -42,29 +42,25 @@
    <div class='row text-center'>
       <h3 class='text-center'>Pedidos realizados</h3>
     </div>
+        {{#each orders}}
+          <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header"><h5 class='text-center'>Pedido {{dataValues.newIndex}}</h5></div>
+            <div class="card-body">
+              <p class="card-title">Producto: {{dataValues.Product.name}}</p>
+              <p>Cantidad: {{dataValues.quantity}}</p>
+              <p>Precio unitario: ${{dataValues.Product.unitaryPrice}}</p>
+              <p>Subtotal: ${{dataValues.subtotal}}</p>
+              <p>IVA (16%): ${{dataValues.vat}}</p>
+              <p>Total: ${{dataValues.total}}</p>
+              <p>Estatus: {{dataValues.status}}</p>
 
-      
-         {{#each orders}}
-        
-        <div class="card bg-light mb-3" style="max-width: 18rem;">
-          <div class="card-header"><h5 class='text-center'>Pedido {{dataValues.newIndex}}</h5></div>
-          <div class="card-body">
-            <p class="card-title">Producto: {{dataValues.Product.name}}</p>
-            <p>Cantidad: {{dataValues.quantity}}</p>
-            <p>Precio unitario: ${{dataValues.Product.unitaryPrice}}</p>
-            <p>Subtotal: ${{dataValues.subtotal}}</p>
-            <p>IVA (16%): ${{dataValues.vat}}</p>
-            <p>Total: ${{dataValues.total}}</p>
-            <p>Estatus: {{dataValues.status}}</p>
-
+            </div>
           </div>
+        {{/each}}
+
+        <div class='row text-center'>
+          <button type="button" class="btn btn-success" id='newOrder'>Levantar un nuevo pedido</button>
         </div>
-
-
-      {{/each}}
-    
-
-    
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
