@@ -36,7 +36,6 @@ module.exports = function(app) {
         res.redirect(307, "/api/login");
       })
       .catch(function(err) {
-        console.log(err);
         res.json(403, err); //send a 403 response if the email is already registered. This is our authentication token, and the only file that cannot be repeated in the database
       });
   });
@@ -71,7 +70,6 @@ module.exports = function(app) {
       ProductId: req.body.ProductId
     }).then(function() {
       res.redirect(200, "/");
-      console.log("res: " + res);
     });
   });
 };
