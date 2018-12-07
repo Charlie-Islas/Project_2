@@ -33,7 +33,7 @@
     <div class='row'>
       <div class='col-md-12'>
       <ul>
-        <li>Nombre/Razón Social: {{name}}</li>
+        <li>Nombre/Razón Social: <span id='userName'>{{name}}</span></li>
         <li>Domicilio: {{street}} {{extNum}}, Int. {{intNum}}, Col. {{neighborhood}}, C.P. {{zipCode}}, {{city}}, {{state}}.</li>
         <li>Registro Federal de Contribuyentes (RFC): {{taxId}}</li>
       </ul>
@@ -52,6 +52,7 @@
               <p>Subtotal: ${{dataValues.subtotal}}</p>
               <p>IVA (16%): ${{dataValues.vat}}</p>
               <p>Total: ${{dataValues.total}}</p>
+              <p>Dirección de entrega: {{dataValues.deliveryAddress}}</p>
               <p>Estatus: {{dataValues.status}}</p>
 
             </div>
