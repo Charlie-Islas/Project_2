@@ -3,6 +3,7 @@
 // When user clicks add-btn
 $("#add-btn").on("click", function(event) {
   event.preventDefault();
+  console.log(localStorage.getItem("emailInput"));
 
   // Make a newBook object
   var newOrder = {
@@ -21,5 +22,7 @@ $("#add-btn").on("click", function(event) {
       console.log(data);
     });
 
+
+    
 
 });
