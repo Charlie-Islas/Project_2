@@ -1,3 +1,6 @@
+//this from an npm to keep the email on
+var localStorage = require('localStorage');
+
 $(document).ready(function() {
   // Getting references to our form and input
   var signUpForm = $("form.signup");
@@ -109,4 +112,7 @@ $(document).ready(function() {
     $("#alert").fadeIn(500);
     $("#alert").css("display", "block");
   }
+
+  //this is the function to keep the users log on.
+  localStorage.setItem('emailInput', JSON.stringify(emailInput));
 });
