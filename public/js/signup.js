@@ -17,7 +17,6 @@ $(document).ready(function() {
 
   // When the signup button is clicked, we validate the email and password are not blank
   signUpForm.on("submit", function(event) {
-    console.log("entra al submitr");
     event.preventDefault();
     var userData = {
       email: emailInput.val().trim(),
@@ -90,16 +89,13 @@ $(document).ready(function() {
       telephone: userData.telephone
     })
       .then(function(data) {
-        console.log(data);
         window.location.replace(data);
-        // If there's an error, handle it by throwing up a bootstrap alert
       })
       .catch(handleLoginErr);
   }
 
   function handleLoginErr(err) {
     var errMsg = "";
-    console.log(err.responseJSON.errors[0].message);
     if (err.responseJSON.errors[0].message === "email must be unique") {
       errMsg = "Este correo electrónico ya está registrado.";
     } else {

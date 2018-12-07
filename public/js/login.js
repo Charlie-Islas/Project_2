@@ -38,7 +38,6 @@ $(document).ready(function() {
 
   function handleLoginErr(err) {
     var errMsg='';
-    console.log(err.status);
     if(err.status==401){
       errMsg='Correo eletrónico o contraseña incorrectos. Por favor vuelva a intentar.';
     }

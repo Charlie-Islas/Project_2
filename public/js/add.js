@@ -5,10 +5,15 @@ $("#add-btn").on("click", function(event) {
   event.preventDefault();
   var sentEmail = localStorage.getItem("emailInput");
   var productId = 0;
-    console.log("add button works");
-  var chosenProduct = $("#productOption")
+  var chosenProduct = $("#productOption");
+  var quantity = $("#quantity")
     .val()
     .trim();
+  var deliveryAddress = $("#deliveryAddress")
+    .val()
+    .trim();
+  var validNumber=Number.isInteger(parseFloat(quantity));
+  console.log(validNumber);
 
   if (chosenProduct === "Galia") {
     productId = 1;
@@ -16,14 +21,24 @@ $("#add-btn").on("click", function(event) {
     productId = 2;
   }
 
+  //would be nice to have these validations, as well as those of login and signup in modals instead of alerts
+  if (quantity <= 0 || !validNumber) {
+    alert(
+      "Por favor ingresa un número válido (enteros mayores a cero únicamente)..."
+    );
+    return;
+  }
+
+  if (!quantity || !deliveryAddress) {
+    alert(
+      "Por favor, introduce la información de todos los campos requeridos para poder procesar tu pedido..."
+    );
+    return;
+  }
   // Make a newBook object
   var newOrder = {
-    quantity: $("#quantity")
-      .val()
-      .trim(),
-    deliveryAddress: $("#deliveryAddress")
-      .val()
-      .trim(),
+    quantity: quantity,
+    deliveryAddress: deliveryAddress,
     email: sentEmail,
     delivered: false,
     ProductId: productId
