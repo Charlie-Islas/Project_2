@@ -49,5 +49,6 @@ $("#add-btn").on("click", function(event) {
     // On success, run the following code
     .then(function() {
       window.location.href = "/members";
-    });
+    });    
+    console.log(newOrder);
 });
