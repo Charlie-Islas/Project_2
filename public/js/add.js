@@ -1,5 +1,6 @@
-// The code in add.js handles what happens when the user clicks the "Add a book" button.
+//We are using Localstorage to keep some information of the user during his story through our browser.
 $("#userName").text(localStorage.getItem("nameInput"));
+
 // When user clicks add-btn
 $("#add-btn").on("click", function(event) {
   event.preventDefault();
@@ -9,9 +10,11 @@ $("#add-btn").on("click", function(event) {
   var quantity = $("#quantity")
     .val()
     .trim();
+
   var deliveryAddress = $("#deliveryAddress")
     .val()
     .trim();
+
   var validNumber=Number.isInteger(parseFloat(quantity));
   console.log(validNumber);
 
@@ -35,7 +38,8 @@ $("#add-btn").on("click", function(event) {
     );
     return;
   }
-  // Make a newBook object
+
+  // Make a newOrder object
   var newOrder = {
     quantity: quantity,
     deliveryAddress: deliveryAddress,

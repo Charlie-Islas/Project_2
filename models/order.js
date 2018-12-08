@@ -1,4 +1,6 @@
+//This part is calling Sequelize for defining what is an order as an object.
 module.exports = function(sequelize, DataTypes) {
+
   var Order = sequelize.define("Order", {
     quantity: {
       type: DataTypes.INTEGER,
@@ -23,19 +25,11 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-   /* Order.associate=function(models){
-    Order.hasOne(models.Product,{
-      foreignKey: {allowNull:false}
-    });
-  };*/
-
   Order.associate = function(models) {
     Order.belongsTo(models.Product, {
       foreignKey: { allowNull: false }
     });
   };
-
-  
 
   return Order;
 };
