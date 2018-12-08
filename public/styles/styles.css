@@ -31,6 +31,14 @@ html,body{
     background-color: rgba(0,0,0,0.7) !important;
 }
 
+.card-order{
+    height: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: auto;
+    background-color: rgba(0,0,0,0.7) !important;
+}
+
 .card-member{
     color: #fff;
     height: auto;
@@ -44,7 +52,7 @@ html,body{
     color: #fff;
     height: auto;
     margin-top: auto;
-    margin-bottom: auto;
+    margin-bottom: 50px;
     width: auto;
     background-color: rgba(0,0,0,0.7) !important;
     padding: 20px;
